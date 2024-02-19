@@ -1,33 +1,33 @@
-const persona = {
-    nombre : 'Moises',
-    apellido : 'Saenz',
-    edad : 25,
-    direccion : {
-        ciudad : 'Santa Tecla',
-        zip : 12345
-    }
+const characters = ['Mario', 'Luigi', 'Toad', 'Peach'];
+
+const mario = characters[0];
+const luigi = characters[1];
+
+console.log(mario, luigi);
+
+const [mario2,, toad, bowser = 'No existe'] = characters;
+
+console.log(mario2, toad);
+
+const returnArray1 = () => {
+    return ['ABC', 123];
+}
+const array1 = returnArray1();
+console.log(array1[0], array1[1]);
+
+const returnArray2 = (array) => {
+    return [array[0], array[1]];
 }
 
-console.log(`persona : ${persona}}`)
-console.log('persona :' + JSON.stringify(persona))
-console.log(persona)
+const [letters, numbers] = returnArray1(['ABC', 123]);
+const [letters2, numbers2] = returnArray2(['ABC', 123]);
 
-// const persona2 = persona //copying rerefence on  memory
-// const persona2 = {persona}
-// persona2.persona.nombre = 'alexis'
-const persona2 = {...persona} 
-console.log(persona)
-console.log('persona2: ')
-persona2.nombre = 'alexi'
-console.log(persona2)
+console.log(letters, numbers);
+console.log(letters2, numbers2);
 
-//+++++++++++++++++++++
 
-const arreglo = [1,2,3,4]
-arreglo.push(5)
-
-const arreglo2 = [...arreglo] //spread operator to walk through
-arreglo2.push(6)
-
-console.log(arreglo)
-console.log(arreglo2)
+const returnArray3 = ([letters, numbers]) => {
+    return [letters, numbers];
+}
+const [letters3, numbers3] = returnArray3(['XYZ', 789]);
+console.log(letters3, numbers3);
