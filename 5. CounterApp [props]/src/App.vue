@@ -2,7 +2,7 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <!-- <Counter v-bind:start='15'/> -->
-  <Counter :start='10'/>
+  <Counter :start='100'/>
   <Counter title="Entraron"/>
   <Counter title="Salieron"/>
 </template>

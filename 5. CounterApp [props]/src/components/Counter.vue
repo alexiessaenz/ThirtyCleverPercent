@@ -21,7 +21,10 @@ export default {
         start: {
             type: Number,
             default: 0,
-            required: true
+            required: true,
+            validator(value) {
+                return value >= 100
+            }
         }
     },
 
