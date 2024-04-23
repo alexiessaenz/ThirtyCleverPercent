@@ -3,7 +3,7 @@
         <h1>Indecision</h1>
 
     </div>
-    <img src="https://via.placeholder.com/250" alt="bg">
+    <img :src='image' alt="bg">
     <div class="bg-dark"></div>  
     <div class="indecision-container">
         <input
@@ -13,7 +13,7 @@
         <p>Recuerda terminar con un signo de interrogacion (?)</p>
         <div>
             <h2>{{ question }}</h2>
-            <h1>Si, No, .... pensando</h1>
+            <h1>{{ answer }}</h1>
         </div>
     </div>
 </template>
@@ -26,12 +26,25 @@ export default {
   },
   data() {
     return {
-      question: null
+      question: null,
+      answer: null,
+      image: "https://via.placeholder.com/250"
+    }
+  },
+  methods: {
+    async getAnswer() {
+      this.answer = 'Thinking...';
+      const { answer, image } =  await fetch('https://yesno.wtf/api').then( res => res.json() )
+      this.answer = answer
+      this.image  = image
+       
     }
   },
   watch: {
     question(value) {
-      console.log(value.includes('?'))
+      if(!value.includes('?')) return
+
+      this.getAnswer()
     }
   }
 }

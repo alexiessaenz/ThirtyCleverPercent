@@ -5,8 +5,7 @@
   <Counter :start='100'/>
   <Counter title="Entraron"/>
   <Counter title="Salieron"/>
-  <h1 class="md-typescale-display-medium">Hello Material!</h1>
-  <div class="container py-4 px-3 mx-auto">
+   <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap and Vite!</h1>
       <button class="btn btn-primary">Primary button</button>
     </div>
@@ -31,15 +30,12 @@
 
 <div>First name</div>
 <md-outlined-text-field aria-label="First name">
-</md-outlined-text-field>
+</md-outlined-text-field> 
 </template>
 
 <script>
-import '@material/web/all.js';
-import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
-imports: {
-        "@material/web/"; "https://esm.run/@material/web/"
-      }
+ import '@material/web/all.js';
+
 
 import HelloWorld from './components/HelloWorld.vue'
 import Counter from './components/Counter.vue'
@@ -58,11 +54,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style >
 
-@import "~bootstrap/scss/bootstrap";
+ /* @import "~bootstrap/scss/bootstrap";  */
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
