@@ -3,15 +3,15 @@
         <h1>Indecision</h1>
 
     </div>
-    <img :src='image' alt="bg">
+    <img v-if="image" :src='image' alt="bg">
     <div class="bg-dark"></div>  
     <div class="indecision-container">
         <input
-        v-model="question" 
-        type="text" 
-        placeholder="Hazme una pregunta">
+          v-model="question" 
+          type="text" 
+          placeholder="Hazme una pregunta">
         <p>Recuerda terminar con un signo de interrogacion (?)</p>
-        <div>
+        <div v-if="isValidQuestion">
             <h2>{{ question }}</h2>
             <h1>{{ answer }}</h1>
         </div>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'Indesition-s',
+  name: 'IndesitionS',
   props: {
     msg: String
   },
@@ -28,22 +28,27 @@ export default {
     return {
       question: null,
       answer: null,
-      image: "https://via.placeholder.com/250"
+      image: null,
+      isValidQuestion: false
     }
   },
   methods: {
     async getAnswer() {
       this.answer = 'Thinking...';
-      const { answer, image } =  await fetch('https://yesno.wtf/api').then( res => res.json() )
-      this.answer = answer
+      // this.image  = null
+      var { answer, image } =  await fetch('https://yesno.wtf/api').then( res => res.json() )
+      // this.answer = answer
       this.image  = image
+      this.answer = answer === 'yes'? 'si' : 'no'
        
     }
   },
   watch: {
     question(value) {
-      if(!value.includes('?')) return
-
+      // if(!value.includes('?')) return
+      this.isValidQuestion = false
+      if(!value.endsWith('?')) return
+      this.isValidQuestion = true
       this.getAnswer()
     }
   }
